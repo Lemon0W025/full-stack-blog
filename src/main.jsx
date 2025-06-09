@@ -1,10 +1,47 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
+import Homepage from "./routes/Homepage.jsx";
+import PostListPage from "./routes/PostListPage.jsx";
+import Write from "./routes/Write.jsx";
+import LoginPage from "./routes/LoginPage.jsx";
+import RegisterPage from "./routes/RegisterPage.jsx";
+import SinglePostPage from "./routes/SinglePostPage.jsx";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Homepage />
+  },
+  {
+    path:"/posts",
+    element: <PostListPage />
+  },
+  {
+    path: "/:slug",
+    element: <SinglePostPage />
+  },
+  {
+    path:"/write",
+    element: <Write />
+  },
+  {
+    path: "/:slug",
+    element: <RegisterPage />
+  },
+  {
+    path:"/login",
+    element: <LoginPage />
+  }
+]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>,
 )
+ 
